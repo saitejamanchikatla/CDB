@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" style="min-height: 100px !important; height: 100px !important;">
+    <mat-toolbar-row>
+          <h2>College Digital Board</h2>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="navbar">
+        <button mat-button [routerLink]="'/'">Home</button>
+        <button mat-button *ngIf="!user" [routerLink]="'/Login'">Login</button>
+        <button mat-button *ngIf="user" [matMenuTriggerFor]="Menu">{{user.name}}</button>
+        <mat-menu #Menu="matMenu">
+              <button mat-menu-item  *ngIf="user && user.isAdmin" [routerLink]="'/productsform'">Manage Submissions</button>
+              <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+      </mat-toolbar-row>
+</mat-toolbar>
